@@ -1,4 +1,5 @@
 import 'package:bmicalc/input_page.dart';
+import 'package:bmicalc/global_styles.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(BMICalculator());
@@ -9,8 +10,8 @@ class BMICalculator extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xff0a0e21),
-        scaffoldBackgroundColor: Color(0xff0a0e21),
+        primaryColor: GlobalStyles.backgroundColorApp,
+        scaffoldBackgroundColor: GlobalStyles.backgroundColorApp,
         textTheme: TextTheme(
           bodyText2: TextStyle(
             color: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:bmicalc/global_styles.dart';
 import 'package:flutter/material.dart';
 
 class GenderContent extends StatelessWidget {
@@ -20,7 +21,7 @@ class GenderContent extends StatelessWidget {
         Icon(
           icon,
           size: size.height * 0.1,
-          color: Color(0xff8d8e98),
+          color: GlobalStyles.inactiveTextColorApp,
         ),
         SizedBox(
           height: size.height * 0.05,
@@ -29,7 +30,7 @@ class GenderContent extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 18,
-            color: Color(0xff8d8e98),
+            color: GlobalStyles.inactiveTextColorApp,
           ),
         )
       ],
