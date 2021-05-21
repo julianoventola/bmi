@@ -1,13 +1,14 @@
+import 'package:bmicalc/global_styles.dart';
 import 'package:flutter/material.dart';
 
 class ContainerWidget extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Color color;
 
   const ContainerWidget({
     Key? key,
-    required this.child,
-    required this.color,
+    this.child,
+    this.color = GlobalStyles.activeCardColorApp,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class ContainerWidget extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(20),
       ),
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.26,
       child: child,
     );
   }

@@ -79,13 +79,27 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           ),
-          //Expanded(child: ContainerWidget()),
-          /*Row(
+          Expanded(child: ContainerWidget()),
+          Row(
             children: [
               Expanded(child: ContainerWidget()),
               Expanded(child: ContainerWidget()),
             ],
-          ),*/
+          ),
+          Container(
+            width: double.maxFinite,
+            height: size.height * 0.08,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: GlobalStyles.bottomContainerColorApp,
+                ),
+                onPressed: () {},
+                child: Text('CALCULAR',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ))),
+          )
         ],
       ),
     );
