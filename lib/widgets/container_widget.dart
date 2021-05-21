@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ContainerWidget extends StatelessWidget {
+  final Widget child;
+
   const ContainerWidget({
     Key? key,
+    required this.child,
   }) : super(key: key);
 
   @override
@@ -13,7 +16,8 @@ class ContainerWidget extends StatelessWidget {
         color: Color(0xff1d1e33),
         borderRadius: BorderRadius.circular(20),
       ),
-      height: 220,
+      height: MediaQuery.of(context).size.height * 0.3,
+      child: child,
     );
   }
 }
