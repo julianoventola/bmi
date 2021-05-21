@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class ContainerWidget extends StatelessWidget {
   final Widget child;
+  final Color color;
 
   const ContainerWidget({
     Key? key,
     required this.child,
+    required this.color,
   }) : super(key: key);
 
   @override
@@ -13,7 +15,7 @@ class ContainerWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Color(0xff1d1e33),
+        color: color,
         borderRadius: BorderRadius.circular(20),
       ),
       height: MediaQuery.of(context).size.height * 0.3,

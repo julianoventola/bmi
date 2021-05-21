@@ -1,16 +1,17 @@
-import 'package:bmicalc/global_styles.dart';
 import 'package:flutter/material.dart';
 
 class GenderContent extends StatelessWidget {
   final Size size;
   final IconData icon;
   final String title;
+  final Color genderTextColor;
 
   const GenderContent({
     Key? key,
     required this.size,
     required this.icon,
     required this.title,
+    required this.genderTextColor,
   }) : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class GenderContent extends StatelessWidget {
         Icon(
           icon,
           size: size.height * 0.1,
-          color: GlobalStyles.inactiveTextColorApp,
+          color: genderTextColor,
         ),
         SizedBox(
           height: size.height * 0.05,
@@ -30,7 +31,8 @@ class GenderContent extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 18,
-            color: GlobalStyles.inactiveTextColorApp,
+            fontWeight: FontWeight.bold,
+            color: genderTextColor,
           ),
         )
       ],
