@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/container_widget.dart';
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -13,8 +15,22 @@ class _InputPageState extends State<InputPage> {
         centerTitle: true,
         title: Text('BMI CALCULATOR'),
       ),
-      body: Center(
-        child: Text('Body Text'),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: ContainerWidget()),
+              Expanded(child: ContainerWidget()),
+            ],
+          ),
+          Expanded(child: ContainerWidget()),
+          Row(
+            children: [
+              Expanded(child: ContainerWidget()),
+              Expanded(child: ContainerWidget()),
+            ],
+          ),
+        ],
       ),
     );
   }
