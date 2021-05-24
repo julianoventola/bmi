@@ -1,3 +1,4 @@
+import 'package:bmicalc/widgets/slider_wiget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -90,52 +91,13 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
               child: ContainerWidget(
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 8),
-              child: Column(
-                children: [
-                  Text(
-                    'HEIGHT',
-                    style: TextStyle(
-                      fontSize: GlobalStyles.textFontSize,
-                      fontWeight: GlobalStyles.textFontBold,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline
-                        .alphabetic, // required for crossAxisAlignment as baseline
-                    children: [
-                      Text(
-                        personHeight.toString(),
-                        style: TextStyle(
-                          fontSize: GlobalStyles.largeTextFontSize,
-                          fontWeight: GlobalStyles.largeTextFontBold,
-                        ),
-                      ),
-                      Text(
-                        'cm',
-                        style: TextStyle(
-                          fontSize: GlobalStyles.textFontSize,
-                          fontWeight: GlobalStyles.textFontBold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Slider(
-                      activeColor: GlobalStyles.bottomContainerColorApp,
-                      inactiveColor: GlobalStyles.inactiveSliderColorApp,
-                      min: 120,
-                      max: 230,
-                      value: personHeight.toDouble(),
-                      onChanged: (value) {
-                        setState(() {
-                          personHeight = value.round();
-                        });
-                      }),
-                ],
-              ),
+            child: SliderWidget(
+              onChanged: (value) {
+                setState(() {
+                  personHeight = value.round();
+                });
+              },
+              personHeight: personHeight,
             ),
           )),
           Row(

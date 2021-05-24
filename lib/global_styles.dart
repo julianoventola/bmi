@@ -8,6 +8,7 @@ class GlobalStyles {
   static const Color activeCardColorApp = Color(0xff1d1e33);
 
   static const Color bottomContainerColorApp = Color(0xffeb1555);
+  static const Color overlaySliderColorApp = Color(0x15eb1555);
   static const Color inactiveSliderColorApp = Color(0xff8d8e98);
 
   static const double textFontSize = 18;

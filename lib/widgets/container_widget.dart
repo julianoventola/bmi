@@ -19,7 +19,7 @@ class ContainerWidget extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(20),
       ),
-      height: MediaQuery.of(context).size.height * 0.26,
+      height: MediaQuery.of(context).size.height * 0.23,
       child: child,
     );
   }
