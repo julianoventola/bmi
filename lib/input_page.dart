@@ -35,6 +35,9 @@ class _InputPageState extends State<InputPage> {
     }
   }
 
+  // This var must be outside widget
+  int personHeight = 183;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,6 +48,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
@@ -86,10 +90,52 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
               child: ContainerWidget(
-            child: Column(
-              children: [
-                Text('HEIGHT'),
-              ],
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              child: Column(
+                children: [
+                  Text(
+                    'HEIGHT',
+                    style: TextStyle(
+                      fontSize: GlobalStyles.textFontSize,
+                      fontWeight: GlobalStyles.textFontBold,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline
+                        .alphabetic, // required for crossAxisAlignment as baseline
+                    children: [
+                      Text(
+                        personHeight.toString(),
+                        style: TextStyle(
+                          fontSize: GlobalStyles.largeTextFontSize,
+                          fontWeight: GlobalStyles.largeTextFontBold,
+                        ),
+                      ),
+                      Text(
+                        'cm',
+                        style: TextStyle(
+                          fontSize: GlobalStyles.textFontSize,
+                          fontWeight: GlobalStyles.textFontBold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Slider(
+                      activeColor: GlobalStyles.bottomContainerColorApp,
+                      inactiveColor: GlobalStyles.inactiveSliderColorApp,
+                      min: 120,
+                      max: 230,
+                      value: personHeight.toDouble(),
+                      onChanged: (value) {
+                        setState(() {
+                          personHeight = value.round();
+                        });
+                      }),
+                ],
+              ),
             ),
           )),
           Row(
