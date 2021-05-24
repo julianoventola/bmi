@@ -1,3 +1,4 @@
+import 'package:bmicalc/global_styles.dart';
 import 'package:flutter/material.dart';
 
 class GenderContent extends StatelessWidget {
@@ -30,8 +31,8 @@ class GenderContent extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+            fontSize: GlobalStyles.textFontSize,
+            fontWeight: GlobalStyles.textFontBold,
             color: genderTextColor,
           ),
         )

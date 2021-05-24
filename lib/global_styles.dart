@@ -7,4 +7,7 @@ class GlobalStyles {
   static const Color inactiveCardColorApp = Color(0xff111328);
   static const Color activeCardColorApp = Color(0xff1d1e33);
   static const Color bottomContainerColorApp = Color(0xffeb1555);
+
+  static const double textFontSize = 18;
+  static const dynamic textFontBold = FontWeight.bold;
 }

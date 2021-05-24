@@ -84,7 +84,14 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           ),
-          Expanded(child: ContainerWidget()),
+          Expanded(
+              child: ContainerWidget(
+            child: Column(
+              children: [
+                Text('HEIGHT'),
+              ],
+            ),
+          )),
           Row(
             children: [
               Expanded(child: ContainerWidget()),
@@ -99,7 +106,7 @@ class _InputPageState extends State<InputPage> {
                   primary: GlobalStyles.bottomContainerColorApp,
                 ),
                 onPressed: () {},
-                child: Text('CALCULAR',
+                child: Text('CALCULATE',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
