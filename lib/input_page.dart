@@ -5,6 +5,11 @@ import 'global_styles.dart';
 import 'widgets/card_content.dart';
 import 'widgets/container_widget.dart';
 
+enum Gender {
+  male,
+  female,
+}
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -16,8 +21,8 @@ class _InputPageState extends State<InputPage> {
   Color maleTextCardColor = GlobalStyles.inactiveTextColorApp;
   Color femaleTextCardColor = GlobalStyles.inactiveTextColorApp;
 
-  void selectGenderCard({required String gender}) {
-    if (gender == 'male') {
+  void selectGenderCard({required Gender gender}) {
+    if (gender == Gender.male) {
       maleCardColor = GlobalStyles.activeCardColorApp;
       maleTextCardColor = GlobalStyles.activeTextColorApp;
       femaleCardColor = GlobalStyles.inactiveCardColorApp;
@@ -46,7 +51,7 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    selectGenderCard(gender: 'male');
+                    selectGenderCard(gender: Gender.male);
                     setState(() {});
                   },
                   child: ContainerWidget(
@@ -63,7 +68,7 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    selectGenderCard(gender: 'female');
+                    selectGenderCard(gender: Gender.female);
                     setState(() {});
                   },
                   child: ContainerWidget(
