@@ -44,10 +44,12 @@ class _InputPageState extends State<InputPage> {
   // This var must be outside widget
   int personHeight = 183;
   int personWeight = 65;
+  int personAge = 25;
   bool _buttonPressed = false;
   bool _loopActive = false;
 
-  void _increaseCounterWhilePressed(CalcMethod method) async {
+  void _increaseCounterWhilePressed(
+      CalcMethod method, String valueToChange) async {
     // make sure that only one loop is active
     if (_loopActive) return;
 
@@ -55,13 +57,22 @@ class _InputPageState extends State<InputPage> {
 
     while (_buttonPressed) {
       setState(() {
-        if (method == CalcMethod.add) {
-          personWeight++;
-        } else {
-          personWeight--;
+        if (valueToChange == 'age') {
+          if (method == CalcMethod.add) {
+            personAge++;
+          } else {
+            personAge--;
+          }
+        }
+        if (valueToChange == 'weight') {
+          if (method == CalcMethod.add) {
+            personWeight++;
+          } else {
+            personWeight--;
+          }
         }
       });
-      await Future.delayed(Duration(milliseconds: 200));
+      await Future.delayed(Duration(milliseconds: 100));
     }
 
     _loopActive = false;
@@ -155,7 +166,8 @@ class _InputPageState extends State<InputPage> {
                           Listener(
                             onPointerDown: (details) async {
                               _buttonPressed = true;
-                              _increaseCounterWhilePressed(CalcMethod.remove);
+                              _increaseCounterWhilePressed(
+                                  CalcMethod.remove, 'weight');
                             },
                             onPointerUp: (details) {
                               _buttonPressed = false;
@@ -180,7 +192,8 @@ class _InputPageState extends State<InputPage> {
                           Listener(
                             onPointerDown: (details) async {
                               _buttonPressed = true;
-                              _increaseCounterWhilePressed(CalcMethod.add);
+                              _increaseCounterWhilePressed(
+                                  CalcMethod.add, 'weight');
                             },
                             onPointerUp: (details) {
                               _buttonPressed = false;
@@ -205,7 +218,83 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
               ),
-              Expanded(child: ContainerWidget()),
+              Expanded(
+                child: ContainerWidget(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'AGE',
+                        style: TextStyle(
+                          fontSize: GlobalStyles.textFontSize,
+                          fontWeight: GlobalStyles.textFontBold,
+                        ),
+                      ),
+                      Text(
+                        personAge.toString(),
+                        style: TextStyle(
+                          fontSize: GlobalStyles.largeTextFontSize,
+                          fontWeight: GlobalStyles.largeTextFontBold,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Listener(
+                            onPointerDown: (details) async {
+                              _buttonPressed = true;
+                              _increaseCounterWhilePressed(
+                                  CalcMethod.remove, 'age');
+                            },
+                            onPointerUp: (details) {
+                              _buttonPressed = false;
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xff4c4f5e),
+                              ),
+                              child: Center(
+                                  child: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              )),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 16,
+                          ),
+                          Listener(
+                            onPointerDown: (details) async {
+                              _buttonPressed = true;
+                              _increaseCounterWhilePressed(
+                                  CalcMethod.add, 'age');
+                            },
+                            onPointerUp: (details) {
+                              _buttonPressed = false;
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xff4c4f5e),
+                              ),
+                              child: Center(
+                                  child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
           Container(
