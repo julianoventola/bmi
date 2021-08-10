@@ -11,6 +11,11 @@ enum Gender {
   female,
 }
 
+enum CalcMethod {
+  add,
+  remove,
+}
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -38,6 +43,29 @@ class _InputPageState extends State<InputPage> {
 
   // This var must be outside widget
   int personHeight = 183;
+  int personWeight = 65;
+  bool _buttonPressed = false;
+  bool _loopActive = false;
+
+  void _increaseCounterWhilePressed(CalcMethod method) async {
+    // make sure that only one loop is active
+    if (_loopActive) return;
+
+    _loopActive = true;
+
+    while (_buttonPressed) {
+      setState(() {
+        if (method == CalcMethod.add) {
+          personWeight++;
+        } else {
+          personWeight--;
+        }
+      });
+      await Future.delayed(Duration(milliseconds: 200));
+    }
+
+    _loopActive = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +130,81 @@ class _InputPageState extends State<InputPage> {
           )),
           Row(
             children: [
-              Expanded(child: ContainerWidget()),
+              Expanded(
+                child: ContainerWidget(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'WEIGHT',
+                        style: TextStyle(
+                          fontSize: GlobalStyles.textFontSize,
+                          fontWeight: GlobalStyles.textFontBold,
+                        ),
+                      ),
+                      Text(
+                        personWeight.toString(),
+                        style: TextStyle(
+                          fontSize: GlobalStyles.largeTextFontSize,
+                          fontWeight: GlobalStyles.largeTextFontBold,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Listener(
+                            onPointerDown: (details) async {
+                              _buttonPressed = true;
+                              _increaseCounterWhilePressed(CalcMethod.remove);
+                            },
+                            onPointerUp: (details) {
+                              _buttonPressed = false;
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xff4c4f5e),
+                              ),
+                              child: Center(
+                                  child: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              )),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 16,
+                          ),
+                          Listener(
+                            onPointerDown: (details) async {
+                              _buttonPressed = true;
+                              _increaseCounterWhilePressed(CalcMethod.add);
+                            },
+                            onPointerUp: (details) {
+                              _buttonPressed = false;
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xff4c4f5e),
+                              ),
+                              child: Center(
+                                  child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Expanded(child: ContainerWidget()),
             ],
           ),
