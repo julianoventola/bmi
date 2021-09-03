@@ -1,9 +1,9 @@
+import 'package:bmicalc/widgets/card_content.dart';
 import 'package:bmicalc/widgets/slider_wiget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'global_styles.dart';
-import 'widgets/card_content.dart';
 import 'widgets/container_widget.dart';
 
 enum Gender {
@@ -22,26 +22,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = GlobalStyles.inactiveCardColorApp;
-  Color femaleCardColor = GlobalStyles.inactiveCardColorApp;
-  Color maleTextCardColor = GlobalStyles.inactiveTextColorApp;
-  Color femaleTextCardColor = GlobalStyles.inactiveTextColorApp;
-
-  void selectGenderCard({required Gender gender}) {
-    if (gender == Gender.male) {
-      maleCardColor = GlobalStyles.activeCardColorApp;
-      maleTextCardColor = GlobalStyles.activeTextColorApp;
-      femaleCardColor = GlobalStyles.inactiveCardColorApp;
-      femaleTextCardColor = GlobalStyles.inactiveTextColorApp;
-    } else {
-      maleCardColor = GlobalStyles.inactiveCardColorApp;
-      maleTextCardColor = GlobalStyles.inactiveTextColorApp;
-      femaleCardColor = GlobalStyles.activeCardColorApp;
-      femaleTextCardColor = GlobalStyles.activeTextColorApp;
-    }
-  }
-
-  // This var must be outside widget
   int personHeight = 183;
   int personWeight = 65;
   int personAge = 25;
@@ -58,16 +38,18 @@ class _InputPageState extends State<InputPage> {
     while (_buttonPressed) {
       setState(() {
         if (valueToChange == 'age') {
-          if (method == CalcMethod.add) {
+          if (method == CalcMethod.add && personAge > 0) {
             personAge++;
-          } else {
+          }
+          if (method == CalcMethod.remove && personAge > 1) {
             personAge--;
           }
         }
         if (valueToChange == 'weight') {
-          if (method == CalcMethod.add) {
+          if (method == CalcMethod.add && personWeight > 0) {
             personWeight++;
-          } else {
+          }
+          if (method == CalcMethod.remove && personWeight > 1) {
             personWeight--;
           }
         }
@@ -77,6 +59,9 @@ class _InputPageState extends State<InputPage> {
 
     _loopActive = false;
   }
+
+  var maleEnabled = false;
+  var femaleEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -95,16 +80,22 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    selectGenderCard(gender: Gender.male);
-                    setState(() {});
+                    setState(() {
+                      maleEnabled = true;
+                      femaleEnabled = false;
+                    });
                   },
                   child: ContainerWidget(
-                    color: maleCardColor,
+                    color: maleEnabled
+                        ? GlobalStyles.activeCardColorApp
+                        : GlobalStyles.inactiveCardColorApp,
                     child: GenderContent(
                       icon: FontAwesomeIcons.mars,
                       size: size,
                       title: 'MALE',
-                      genderTextColor: maleTextCardColor,
+                      genderTextColor: maleEnabled
+                          ? GlobalStyles.activeTextColorApp
+                          : GlobalStyles.inactiveTextColorApp,
                     ),
                   ),
                 ),
@@ -112,16 +103,22 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    selectGenderCard(gender: Gender.female);
-                    setState(() {});
+                    setState(() {
+                      maleEnabled = false;
+                      femaleEnabled = true;
+                    });
                   },
                   child: ContainerWidget(
-                    color: femaleCardColor,
+                    color: femaleEnabled
+                        ? GlobalStyles.activeCardColorApp
+                        : GlobalStyles.inactiveCardColorApp,
                     child: GenderContent(
                       icon: FontAwesomeIcons.venus,
                       size: size,
                       title: 'FEMALE',
-                      genderTextColor: femaleTextCardColor,
+                      genderTextColor: femaleEnabled
+                          ? GlobalStyles.activeTextColorApp
+                          : GlobalStyles.inactiveTextColorApp,
                     ),
                   ),
                 ),
