@@ -11,6 +11,11 @@ class GlobalStyles {
   static const Color overlaySliderColorApp = Color(0x15eb1555);
   static const Color inactiveSliderColorApp = Color(0xff8d8e98);
 
+  static const Color resultTextColor = Color(0xff24d876);
+  static const double textResultFontSize = 22;
+  static const double textBMIFontSize = 100;
+  static const double textRecomendationFontSize = 22;
+
   static const double textFontSize = 18;
   static const dynamic textFontBold = FontWeight.bold;
 
