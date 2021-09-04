@@ -1,16 +1,35 @@
-# bmicalc
+# BMI App - [![Flutter](https://img.shields.io/badge/Flutter-dart-white?labelColor=blue&style=flat&link=https://flutter.dev/)](https://flutter.dev/)
 
-A new Flutter project.
+<h1 align="center">
+  <img width="427" src= "./logobmi.JPG">
+  <p>⚖️Calculate your BMI using this App⚖️</p>
+  <img width="427" src= "./bmi.gif">
+</h1>
+
+# Features
+
+- Main page with selectables:
+  - Gender
+  - Height (in a slides)
+  - Weight
+  - Age
+- Result page calculating the BMI using just weight and height
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Clone the repository
+- run in cmd:
+  ```cmd
+  flutter pub get
+  flutter run
+  ```
 
-A few resources to get you started if this is your first Flutter project:
+## Dependencieis
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+| Lib                  | Link                                                           |
+| -------------------- | -------------------------------------------------------------- |
+| Font Awesome Flutter | [Awesome icons](https://pub.dev/packages/font_awesome_flutter) |
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Device
+
+- Tested in Pixel 4 - Android 11
